@@ -1,7 +1,14 @@
+using ProjetoCadastro.Repositorio;
+
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+//Injeção de dependência no UsuarioRepositorio e ProdutoRepositorio. 
+builder.Services.AddScoped<UsuarioRepositorio>();
+builder.Services.AddScoped<ProdutoRepositorio>();
 
 var app = builder.Build();
 
@@ -21,3 +28,4 @@ app.MapControllerRoute(
     pattern: "{controller=Home}/{action=Index}/{id?}");
 
 app.Run();
+

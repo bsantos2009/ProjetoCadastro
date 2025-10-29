@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
 using ProjetoCadastro.Models;
 using ProjetoCadastro.Repositorio;
 namespace ProjetoCadastro.Controllers
@@ -7,9 +8,12 @@ namespace ProjetoCadastro.Controllers
     {
         private readonly ProdutoRepositorio _repositorio;
 
-        public ProdutoController()
+        private readonly IConfiguration _configuration;
+
+        public ProdutoController(IConfiguration configuration)
         {
-            _repositorio = new ProdutoRepositorio();
+            _configuration = configuration;
+            _repositorio = new ProdutoRepositorio(_configuration);
         }
 
         // GET:Listar

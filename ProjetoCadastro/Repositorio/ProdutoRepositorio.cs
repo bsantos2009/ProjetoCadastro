@@ -1,12 +1,17 @@
-﻿
-using MySql.Data.MySqlClient;
+﻿using MySql.Data.MySqlClient;
 using System.Data;
 using ProjetoCadastro.Models;
 namespace ProjetoCadastro.Repositorio
 {
     public class ProdutoRepositorio
     {
-        private readonly string _connectionString = "server=localhost;port=3307;database=dbProjetoCad;user=root;password=1692b;";
+        private readonly string _connectionString;
+
+        public ProdutoRepositorio(IConfiguration configuration)
+        {
+            _connectionString = configuration.GetConnectionString("MySQLConnection") 
+                ?? throw new InvalidOperationException("Connection string 'MySQLConnection' not found.");
+        }
 
 
         public void Cadastrar(Produto produto)

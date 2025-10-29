@@ -5,7 +5,7 @@ namespace ProjetoCadastro.Repositorio
 {
     public class UsuarioRepositorio
     {
-        private readonly string _connectionString = "server=localhost;port=3307;database=dbProjetoCad;user=root;password=;";
+        private readonly string _connectionString = "server=localhost;port=3307;database=dbProjetoCad;user=root;password=1692b;";
 
         //(INSERT)
         public void Cadastrar(Usuario usuario)

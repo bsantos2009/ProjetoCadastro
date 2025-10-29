@@ -1,0 +1,31 @@
+﻿@model ProjetoCadastro.Models.Usuario
+@{
+    ViewData["Title"] = "Cadastrar Usuário";
+}
+
+<div class="container mt-5 col-md-4">
+    <h2 class="text-center mb-4">Cadastrar Usuário</h2>
+
+    <form asp-action="Cadastrar" method="post" class="card p-4 shadow">
+        <div class="mb-3">
+            <label class="form-label">Nome</label>
+            <input asp-for="Nome" class="form-control" required />
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">E-mail</label>
+            <input asp-for="Email" class="form-control" type="email" required />
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Senha</label>
+            <input asp-for="Senha" class="form-control" type="password" required />
+        </div>
+
+        <button type="submit" class="btn btn-success w-100">Cadastrar</button>
+
+        <div class="text-center mt-3">
+            <a asp-action="Login">Já tenho uma conta</a>
+        </div>
+    </form>
+</div>

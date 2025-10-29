@@ -1,0 +1,14 @@
+﻿@model ProjetoCadastro.Models.Produto
+@{
+    ViewData["Title"] = "Excluir Produto";
+}
+
+<h2>Confirmar Exclusão</h2>
+
+<p>Deseja realmente excluir o produto <strong>@Model.Nome</strong>?</p>
+
+<form asp-action="Excluir" method="post">
+    <input type="hidden" asp-for="Id" />
+    <button type="submit" class="btn btn-danger">Sim, excluir</button>
+    <a asp-action="Listar" class="btn btn-secondary">Cancelar</a>
+</form>

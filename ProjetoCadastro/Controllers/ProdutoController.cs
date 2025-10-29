@@ -12,20 +12,20 @@ namespace ProjetoCadastro.Controllers
             _repositorio = new ProdutoRepositorio();
         }
 
-        // GET: Produto/Listar
+        // GET:Listar
         public IActionResult Listar()
         {
             var lista = _repositorio.Listar();
             return View(lista);
         }
 
-        // GET: Produto/Cadastrar
+        // GET:Cadastrar
         public IActionResult Cadastrar()
         {
             return View();
         }
 
-        // POST: Produto/Cadastrar
+        // POST:Cadastrar
         [HttpPost]
         public IActionResult Cadastrar(Produto produto)
         {
@@ -38,7 +38,7 @@ namespace ProjetoCadastro.Controllers
             return View(produto);
         }
 
-        // GET: Produto/Editar/
+        // GET:Editar/
         public IActionResult Editar(int id)
         {
             var produto = _repositorio.Listar().FirstOrDefault(p => p.Id == id);
@@ -48,7 +48,7 @@ namespace ProjetoCadastro.Controllers
             return View(produto);
         }
 
-        // POST: Produto/Editar
+        // POST:Editar
         [HttpPost]
         public IActionResult Editar(Produto produto)
         {
@@ -61,7 +61,7 @@ namespace ProjetoCadastro.Controllers
             return View(produto);
         }
 
-        // GET: Produto/Excluir/
+        // GET:Excluir
         public IActionResult Excluir(int id)
         {
             _repositorio.Deletar(id);

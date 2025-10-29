@@ -52,5 +52,47 @@ namespace ProjetoCadastro.Repositorio
                 return null; // se não encontrou o usuário
             }
         }
+            
+            // SELECT Listar todos os usuários
+        public List<Usuario> Listar()
+        {
+            var lista = new List<Usuario>();
+
+            using (var conexao = new MySqlConnection(_connectionString))
+            {
+                conexao.Open();
+                string sql = "SELECT * FROM tbUsuarios";
+                MySqlCommand cmd = new MySqlCommand(sql, conexao);
+
+                using (var reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        lista.Add(new Usuario
+                        {
+                            Id = reader.GetInt32("Id"),
+                            Nome = reader.GetString("Nome"),
+                            Email = reader.GetString("Email"),
+                            Senha = reader.GetString("Senha")
+                        });
+                    }
+                }
+            }
+
+            return lista;
+        }
+
+        // DELETE
+        public void Deletar(int id)
+        {
+            using (var conexao = new MySqlConnection(_connectionString))
+            {
+                conexao.Open();
+                string sql = "DELETE FROM tbUsuarios WHERE Id = @Id";
+                MySqlCommand cmd = new MySqlCommand(sql, conexao);
+                cmd.Parameters.AddWithValue("@Id", id);
+                cmd.ExecuteNonQuery();
+            }
+        }
     }
 }

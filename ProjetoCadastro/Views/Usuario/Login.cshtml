@@ -5,10 +5,8 @@
 <div class="container mt-5 col-md-4">
     <h2 class="text-center mb-4">Login</h2>
 
-    @if (ViewBag.MensagemErro != null)
-    {
-        <div class="alert alert-danger">@ViewBag.MensagemErro</div>
-    }
+    @Html.ValidationSummary(false, "", new { @class = "text-danger" })
+    
 
     <form asp-action="Login" method="post" class="card p-4 shadow">
         <div class="mb-3">
